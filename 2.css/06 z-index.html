@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>z-index</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            color: white;
+            position: relative;
+        }
+
+        #div1 {
+            background-color: orange;
+            z-index: 200;
+        }
+
+        #div2 {
+            background-color: orangered;
+            bottom: 50px;
+            z-index: 5;
+        }
+
+        #div3 {
+            background-color: green;
+            bottom: 100px;
+            z-index: 100;
+        }
+
+        #div4 {
+            background-color: blueviolet;
+            bottom: 150px;
+            z-index: 10;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>레이어 상하위 z-index를 통한 우선순위 변경</h1>
+    <div id="div1">Orange</div>
+    <div id="div2">orangered</div>
+    <div id="div3">green</div>
+    <div id="div4">blueviolet</div>
+
+</body>
+
+</html>

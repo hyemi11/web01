@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>justify,wrap</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: gray;
+            margin: 5px;
+        }
+
+        .container {
+            display: flex;
+            background-color: blueviolet;
+            justify-content: space-between;
+            justify-content: space-around;
+            justify-content: space-evenly;
+            flex-wrap: wrap;
+            /*flex-wrap : box 비율 유지*/
+        }
+    </style>
+</head>
+
+
+<body>
+    <div class="container">
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+    </div>
+</body>
+
+</html>

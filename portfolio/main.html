@@ -11,19 +11,31 @@
     <link rel="stylesheet" href="style.css">
 
     <style>
-        body {
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+            border-width: 1px;
+            border-style: solid;
             font-family: 'Work Sans', sans-serif;
+
+        }
+
+        /* img {
+            max-width: 100%;
+            height: auto;
+        } */
+
+
+        h1 h2 {
+            font-weight: 700;
         }
 
         h1 {
-            font-weight: 700;
-            /* Bold */
             font-size: 48px;
-            padding: 16px;
         }
 
         h2 {
-            font-weight: 700;
             font-size: 32px;
         }
 
@@ -36,7 +48,6 @@
         nav {
             background-color: azure;
             height: 65px;
-            padding: auto;
             font-weight: 600;
             /* semiBold */
         }
@@ -48,6 +59,7 @@
             /* 플렉스 컨테이너로 설정 */
             justify-content: flex-end;
             /* 오른쪽 정렬 */
+            padding-right: 100px;
 
         }
 
@@ -57,8 +69,46 @@
         }
 
         .door-section {
+            background-color: red;
+            padding-left: 16px;
+            padding-right: 16px;
+        }
+
+        .door-headline {
+            background-color: rgb(244, 155, 155);
+
+
+        }
+
+        .door-img {
+            background-color: orange;
+            height: 300px;
             display: flex;
             justify-content: center;
+            overflow: hidden;
+            /* display + justify <- 이미지정렬*/
+            /* overflow <- 이미지가 컨테이너를 넘을 경우 자르기*/
+
+        }
+
+        .door-img img {
+            /* max-width: 100%; */
+            /*이미지가 상위 컨테이너 너비를 넘지 않게*/
+            /* max-height: 100%; */
+            /*이미지가 상위 컨에이너 높이를 넘지 않게*/
+            object-fit: contain;
+            /*비율 유지*/
+        }
+
+        .door-text {
+            background-color: green;
+            height: 100px;
+            /* align-content: center; */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+
         }
     </style>
 </head>
@@ -75,33 +125,37 @@
             </ul>
         </nav>
 
-        <h1>hi! this is my seb-site.<br>
-            I'm hyemi.
-        </h1>
+        <section class="door-section">
+            <div class="door-headline">
+                <h1>hi! this is my seb-site.<br>
+                    I'm hyemi.
+                </h1>
+            </div>
+            <div class="door-img">
+                <img src="src/커피마시는나.jpg" alt="프로필사진" width="100px">
+            </div>
+            <div class=" door-text">
+                <p>
+                    dfkjsldsdlfksjdfljsdkjflajskdjfskjdflkjsalkfjksdjfkjasldfjlksadjfkasj<br>
+                    dlfkjksdjfkjslkdjflkajsdkfjaksdjfljaskfjkjlkajsdkfjaksdjfljaskfjkj<br>
+                    lkajsdkfjaksdjfljaskfjkjlkajsdkfjaksdjfljaskfjkjlkajsdkfjaksdjfljaskfjkj<br>
+                </p>
+            </div>
 
-        <div class="door-section">
-            <img src="src/커피마시는나.jpg" alt="프로필사진" width="100">
-
-
-        </div>
+        </section>
 
     </header>
     <main id="content">
         <div class="image-section">
         </div>
         <div class="text-section">
-            <p>
-                dfkjsldsdlfksjdfljsdkjflajskdjfskjdflkjsalkfjksdjfkjasldfjlksadjfkasj<br>
-                dlfkjksdjfkjslkdjflkajsdkfjaksdjfljaskfjkjlkajsdkfjaksdjfljaskfjkj<br>
-                lkajsdkfjaksdjfljaskfjkjlkajsdkfjaksdjfljaskfjkjlkajsdkfjaksdjfljaskfjkj<br>
-            </p>
-            <p>
-                <a href="sub거실.html">거실</a>
-                <a href="sub내방.html">내방</a>
-            </p>
         </div>
     </main>
     <footer>
+        <p>
+            <a href="sub거실.html">거실</a>
+            <a href="sub내방.html">내방</a>
+        </p>
         <p>&copy; 2024 hmi. All rights reserved.</p>
     </footer>
 
