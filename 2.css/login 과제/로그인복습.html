@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            justify-content: center;
+            max-height: 100vh;
+            align-items: center;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            background: linear-gradient(to bottom, gray, rgb(66, 73, 66), rgb(74, 108, 74))
+        }
+
+        .main {
+            width: 350px;
+            height: 500px;
+            background-color: red;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 5px 20px 50px #000;
+
+        }
+
+        labe {
+            color: white;
+            font-size: 2.3em;
+            justify-content: center;
+            display: flex;
+            margin: 60px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: .5s ease-in-out;
+        }
+
+        input {
+            width: 60%;
+            height: 20px;
+            background-color: white;
+            justify-content: center;
+            display: flex;
+            margin: 20px auto;
+            padding: 10px;
+            border: none;
+            outline: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="sign up">
+        <form>
+            <label>Sign up</label>
+            <input type="text" placeholder="User name">
+            <input type="email" placeholder="Email">
+            <input type="password" placeholder="password">
+            <button id="bt1">Sign up</button>
+        </form>
+    </div>
+    <div class="login">
+        <form>
+
+            <label id="h1">log in</label>
+            <input type="text" placeholder="Email">
+            <input type="text" placeholder="password">
+            <button>log in</button>
+        </form>
+    </div>
+
+</body>
+
+</html>

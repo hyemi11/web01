@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="modal.css">
+    <script src="modal.js" defer></script>
+</head>
+
+<body>
+    <h1>안녕하세요</h1>
+    <p>아무내용이나작성하시오</p>
+    <button id="open">모달열기</button>
+
+    <div class="modalcontainer" style="display: none;">
+        <div class="modal">
+            <div class="modal-title">안녕하세요</div>
+            <p>참어렵다</p>
+            <div class="modal-close">
+                <button id="close"> 닫기</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
+
+
+<br><br><br><br>
+이게모냐면, 모달창 디스플레이 = none으로 해. <br>
+그리고 '열기버튼'을 눌렀을때, 모달창 디스플레이가 flex로 하는 함수를 호출 (함수는 돔에서만듬)

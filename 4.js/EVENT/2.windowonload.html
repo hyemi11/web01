@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // window.onload = 함수();
+        // window.onload = () => { };
+
+        window.onload = () => {
+            console.log("window.onload 함수로 모든 리소스 (html/css/image등)가 다 로딩됨 #1");
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            //Dom이 로딩이 되었을때다
+            //그말인 즉, css라던지 , Image라던지,이런 실제 모든 컨텐츠는 로딩 되었다고 보장할 수 없다
+            console.log("DOM 이 완전히 로딩 되었음..");
+
+        });
+
+
+    </script>
+
+</body>
+
+</html>
+
+
+
+1. 돔이 먼저 로드되는 것을 알 수 있다

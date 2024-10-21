@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #dragItem {
+            width: 100px;
+            height: 100px;
+            background-color: #ffcc00;
+            cursor: pointer;
+            margin: 5px;
+
+        }
+
+        #dropZone {
+            width: 200px;
+            height: 200px;
+            margin-top: 50px;
+            border: 2px dashed #ccc;
+            background-color: #f0f0f0;
+
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="dragItem" draggable="true">Drag Me</div>
+    <div id="dropZone">Drop here</div>
+    <script>
+
+
+        const dragItem = document.getElementById('dragItem');
+        const dropZone = document.getElementById('dropZone');
+
+        dragItem.addEventListener('dragstart', () => {
+            console.log("drag start...");
+        });
+
+        dropZone.addEventListener('dragover', (event) => {
+            event.preventDefault();
+            console.log("이개체 위에 무언가 올라옴");
+        });
+
+        dropZone.addEventListener('drop', (event) => {
+            event.preventDefault();
+            console.log("드롭 발생");
+            dropZone.appendChild(dragItem)
+        })
+        //DOM트리구조상, 멀티 parent를 가질수 없음,그래서 appendChild하면, 이전노드?에서 떨어짐
+
+    </script>
+
+
+</body>
+
+</html>
+
+<br><br><br><br><br><br><br>
+한개 존에 한개 엘레멘트 떨어트리기
+1. 드래그할 개체에 'dragover', 드롭받을 개체에 'drop'
+2. drop존에 'dragItem'을 차일드로 append해서, 돔트리 개체간 이동?(드롭이 행해짐)

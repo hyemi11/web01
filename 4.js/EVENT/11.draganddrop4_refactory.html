@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .dragItem {
+            width: 100px;
+            height: 100px;
+            cursor: pointer;
+            margin: 5px;
+            flex-shrink: 0;
+        }
+
+        .dragItem1 {
+            background-color: red;
+        }
+
+        .dragItem2 {
+            background-color: blue;
+        }
+
+        .dragItem3 {
+            background-color: white;
+        }
+
+        #dropZone {
+            width: 200px;
+            min-height: 200px;
+            margin-top: 100px;
+            border: 2px dashed #ccc;
+            background-color: #f0f0f0;
+            display: flex;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="dragItem1" class="dragItem dragItem1" draggable="true">Drag Me1</div>
+    <div id="dragItem2" class="dragItem dragItem2" draggable="true">Drag Me2</div>
+    <div id="dragItem3" class="dragItem dragItem3" draggable="true">Drag Me3</div>
+
+    <div id="dropZone">Drop here</div>
+    <script>
+        const dragItems = document.querySelectorAll('.dragItem');
+        const dropZone = document.getElementById('dropZone');
+
+        dragItems.forEach(dragItem => {
+            dragItem.addEventListener('dragstart', (event) => {
+                console.log("drag start..." + event.target.id);
+                event.dataTransfer.setData('target', event.target.id);
+            });
+
+        })
+
+
+        dropZone.addEventListener('dragover', (event) => {
+            event.preventDefault();
+            console.log("이개체 위에 무언가 올라옴");
+        });
+
+        let currentWidth = 200;
+        dropZone.addEventListener('drop', (event) => {
+            event.preventDefault();
+            const data = event.dataTransfer.getData('target');
+            console.log("드롭발생: ", data);
+            const draggedElement = document.getElementById(data);
+            dropZone.appendChild(draggedElement);
+
+            currentWidth += 100;
+            dropZone.style.width = currentWidth + 'px';
+        })
+        //DOM트리구조상, 멀티 parent를 가질수 없음,그래서 appendChild하면, 이전노드?에서 떨어짐
+
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+
+        function number_inc() {
+            //DOM 요소를 가져와서 글자를 숫자로 변환해서 반환함
+            const result = document.getElementById('result');
+            result.textContent = Number(result.textContent) + 1;
+            // var finalResult = parseInt(result.textContent, 10) + 1;
+            // result.textContent = finalResult;
+        }
+
+
+        function number_dec() {
+            //DOM 요소를 가져와서 글자를 숫자로 변환해서 반환함
+            const result = document.getElementById('result');
+            var finalResult = Number(result.textContent) - 1;
+            result.textContent = finalResult;
+        }
+
+    </script>
+</head>
+
+<body>
+    <h1>버튼월드</h1>
+    <div id="result">0</div>
+    <div>
+        <button onclick="number_inc()">+1</button>
+        <button onclick="number_dec()">-1</button>
+    </div>
+</body>
+
+</html>
