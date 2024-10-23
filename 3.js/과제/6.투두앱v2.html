@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>To-Do list</h1>
+    <input id="mytext" type="text" placeholder="New to-do">
+    <button>Add</button>
+    <div id="todolist">
+
+    </div>
+</body>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const submit = document.getElementById("submit");
+        function getValue() {
+            const mytext = document.getElementById("mytext").value;
+            document.getElementById("mytxt").value = '';
+
+            let listItem = document.createElement('li');
+            listItem.innerHTML = mytext;
+
+            let checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.className = 'todo-checkbox';
+
+            checkbox.addEventListener('change', function () {
+                listItem.classList.toggle('completed');
+            })
+
+            let span = document.createElement('span');
+            span.textContent = mytext;
+
+            let deleteIcon = document.createElement('span');
+            deleteIcon.innerHTML = ❌;
+            deleteIcon.className = 'delete-icon';
+
+            deleteIcon.addEventListener('click', function () {
+                listItem.remove();
+            })
+
+
+            document.body.appendChild(checkbox);
+            document.body.appendChild(span);
+            document.body.appendChild(deleteIcon);
+
+            document.body.appendChild(listItem);
+
+
+
+        }
+    })
+</script>
+
+</html>

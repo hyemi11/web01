@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    </style>
+</head>
+
+<body>
+    <h1>숫자 맞추기 게임(1~100)</h1>
+    <input id="guess" type="number" placeholder="숫자를 입력하세요">
+    <button onclick="checkGuess()">Guess</button>
+    <p id="result"></p>
+    <h2>나의 추측리스트</h2>
+    <ol id="historyList"></ol>
+    <script>
+        //1. 랜덤 숫자 1~100 가지를 생성한다
+        const random = Math.floor(Math.random() * 100) + 1;
+        console.log(random);
+
+
+
+        //2. Guess button을 통해 입력한 숫자와 내 숫자가 맞는지 비교한다
+        function checkGuess() {
+            const guess = document.getElementById("guess").value; // parseInt, Number
+            const result = document.getElementById("result");
+            const historyList = document.getElementById("historyList");
+
+
+            if (guess < random) {
+                console.log("Too Low");
+                result.innerHTML = "<B> Too Low</B>";
+            } else if (guess > random) {
+                console.log("Too High")
+                result.innerHTML = "<B> Too High</B>";
+            } else {
+                result.innerHTML = "<B> Correct</B>";
+            }
+
+
+            //3항 연산자
+            //(조건은) ? true : false
+            // result.innerHTML = (guess < random) ? "Too Low"
+            //     : (guess > random) ? "Too High"
+            //         : "Correct";
+
+            //히스토리 기록
+            const listItem = document.createElement("li");
+            listItem.textContent = `예측숫자: ${guess}`;
+            historyList.appendChild(listItem);
+        }
+
+
+
+        //2-1. 입력한 숫자가 더 크면? Too High라고 알려주기
+        //2-2. 입력한 숫자가 더 작으면? Too Low라고 알려주기
+        //2-3. 같으면? Correct 라고 알려주기
+
+        //3. 입력한 값들의 로그를 출력하기
+
+        //4. 이걸 내가 풀어가는 사람 입장에서, 최소화 해서 푸는 기법을 뭐라고 부르는가? 2진트리 2진검색 binary search(가장 좋은 검색 알고리즘 중 하나임)
+    </script>
+</body>
+
+</html>

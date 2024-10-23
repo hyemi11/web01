@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .completed {
+            text-decoration: line-through;
+            color: gray;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>To-Do list</h1>
+    <input id="mytext" type="text" placeholder="New to-do">
+    <button id="submit">Add</button>
+    <div id="todolist"></div>
+
+
+
+</body>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const submit = document.getElementById("submit");
+
+        function getValue() {
+            const mytext = document.getElementById("mytext").value;
+            document.getElementById('mytext').value = '';
+
+            let listItem = document.createElement('li');
+            listItem.innerHTML = mytext;
+            document.body.appendChild(listItem);
+
+            listItem.addEventListener('click', function () {
+                listItem.classList.toggle('completed');
+            });
+            document.getElementById('todolist').appendChild(listItem);
+        }
+        submit.addEventListener('click', getValue);
+    })
+
+</script>
+
+</html>
