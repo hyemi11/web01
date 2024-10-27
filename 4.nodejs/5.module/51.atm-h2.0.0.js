@@ -1,3 +1,7 @@
+// showMenu() -> 스위치문.r.question으로 amount 받고 그걸 인자로 atm매소드 호출
+// -> atm메소드실행/종료-> 스위치문.showMenu()실행 -> 케이스문 break
+//-------------------------------------//
+
 const readline = require("readline");
 
 // ATM 클래스 정의

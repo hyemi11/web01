@@ -1,3 +1,10 @@
+// showAtmBoard() -> 스위치문.atm.메소드 호출 ->
+// r.question으로 amount 이력받아 이프문 실행/showAtmBoard()/메소드 종료
+// -> 스위치 케이스문 break
+//-------------------------------------//
+// (주의)r. question는 비동기 처리이기 때문에 같은 레벨?에 b라는 다른 함수가 있다면, 함수 처리되기전에(사용자입력받기전에) b도 호출되어 b가 먼저 콘솔에 출력되게됨//
+//-------------------------------------//
+
 const readline = require("readline");
 
 // 입출력 인터페이스 오브젝트로 생성하여 사용하기 (readline Interface)
@@ -23,7 +30,7 @@ class ATM {
       } else {
         this.balance += Number(amount);
         console.log(`${amount}원이 입금되었습니다.`);
-        console.log(this.checkBalance());
+        this.checkBalance();
       }
       showAtmBoard();
     });
@@ -38,7 +45,7 @@ class ATM {
         console.log(this.checkBalance());
       } else {
         this.balance -= Number(amount);
-        console.log(this.checkBalance());
+        this.checkBalance();
       }
       showAtmBoard();
     });
@@ -63,6 +70,7 @@ function workSwitch(choice) {
   switch (choice) {
     case "1":
       atm.checkBalance();
+      showAtmBoard();
       break;
     case "2":
       atm.deposit();
@@ -80,5 +88,4 @@ function workSwitch(choice) {
   }
 }
 
-// 프로그램시작
 showAtmBoard();
