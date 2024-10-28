@@ -4,16 +4,16 @@ const csvWriter = createCsvWriter({
   path: "example.csv",
   header: [
     // 내 파일의 헤더
-    { id: "column1", title: "Column1" },
-    { id: "column2", title: "Column2" },
+    { id: "col1", title: "name" },
+    { id: "col2", title: "Column2" },
   ],
 });
 
 const data = [
-  { column1: "값1", column2: "값2" },
-  { column1: "값3", column2: "값4" },
-  { column1: "값5", column2: "값6" },
-  { column1: "값7", column2: "값8" },
+  { col1: "값1", col2: "값2" },
+  { col1: "값3", col2: "값4" },
+  { col1: "값5", col2: "값6" },
+  { col1: "값7", col2: "값8" },
 ];
 
 csvWriter.writeRecords(data).then(() => {

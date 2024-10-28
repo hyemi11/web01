@@ -58,6 +58,12 @@
         }
         function appendSymbol(symbol) {
             const resultDOM = document.getElementById('result');
+            const lastInput = resultDOM.value[resultDOM.value.length - 1];
+            if (isSymbol(lastInput)) {
+                console.log(lastInput, symbol);
+                resultDOM.value = resultDOM.value.slice(0, -1) + symbol;
+
+            }
 
 
         }

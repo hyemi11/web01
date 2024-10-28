@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <title>To-Do List</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background-color: #f0f0f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      width: 300px;
+      text-align: center;
+    }
+
+    #todo-input {
+      width: calc(100% - 20px);
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+
+    #add-btn {
+      padding: 10px;
+      background-color: #5cb85c;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    #add-btn:hover {
+      background-color: #4cae4c;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .todo-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .todo-item.completed span {
+      text-decoration: line-through;
+      color: #999;
+    }
+
+    .todo-item button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #d9534f;
+      font-size: 18px;
+    }
+
+    .todo-item button:hover {
+      color: #c9302c;
+    }
+  </style>
+
+
+
+</head>
+
+<body>
+  <div class="container">
+    <h1>To-Do List</h1>
+    <input type="text" id="todo-input" placeholder="할 일을 입력하세요..." />
+    <button id="add-btn">추가</button>
+    <ul id="todo-list"></ul>
+  </div>
+
+  <script>
+    // DOM 요소 가져오기
+    const todoInput = document.querySelector('#todo-input');
+    const addBtn = document.querySelector('#add-btn');
+    const todoList = document.querySelector('#todo-list');
+
+    // 할 일 추가 함수
+    function addTodo() {
+      const todoText = todoInput.value.trim();
+      if (!todoText) return; // 입력값 없을 때 종료
+
+      // li 요소 생성 및 클래스 추가
+      const todoItem = document.createElement('li');
+      todoItem.classList.add('todo-item');
+
+      // 체크박스 생성 및 이벤트 등록
+      const checkbox = document.createElement('input');
+      checkbox.type = 'checkbox';
+      checkbox.addEventListener('change', () => toggleComplete(todoItem));
+
+      // 텍스트 노드 생성
+      const todoTextSpan = document.createElement('span');
+      todoTextSpan.textContent = todoText;
+
+      // 삭제 버튼 생성 및 이벤트 등록
+      const deleteBtn = document.createElement('button');
+      deleteBtn.innerHTML = '❌';
+      deleteBtn.addEventListener('click', () => removeTodo(todoItem));
+
+      // 요소들을 li에 추가
+      todoItem.append(checkbox, todoTextSpan, deleteBtn);
+
+      // ul에 새 할 일 추가
+      todoList.appendChild(todoItem);
+
+      // 입력 필드 초기화
+      todoInput.value = '';
+    }
+
+    // 완료 표시 함수 (클래스 토글)
+    function toggleComplete(todoItem) {
+      todoItem.classList.toggle('completed');
+    }
+
+    // 할 일 삭제 함수
+    function removeTodo(todoItem) {
+      todoList.removeChild(todoItem);
+    }
+
+    // 이벤트 리스너 등록
+    addBtn.addEventListener('click', addTodo);
+    todoInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') addTodo();
+    });
+
+  </script>
+</body>
+
+</html>
