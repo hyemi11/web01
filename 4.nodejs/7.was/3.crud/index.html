@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/user">User</a>
+    </nav>
+    <section>
+        <h1>Hello Node !</h1>
+        <p>Hello Server!</p>
+
+    </section>
+    <section>
+        <h2>Users</h2>
+
+        <form id="form">
+            <input text="text" id="username">
+            <button type="submit">Submit</button>
+        </form>
+
+        <!-- 여기에 사용자 목록 출력할 div 영역 -->
+        <div id="userTable"></div>
+    </section>
+    <!-- <script src="static/user.js"></script> -->
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            console.log("나의 js 코드");
+            const userTable = document.getElementById('userTable');
+            const form = document.getElementById('form');
+            //form 버튼을 클릭해서 post
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();//form 자체의 기본 기능 못하게 막기
+                fetch('/user', {
+                    method: 'POST',
+                }).then();
+            });
+
+            //시작할때 자동 로딩
+            fetch('/user', {
+                method: "GET",
+            }).then(response => {
+                if (response.ok) {
+                    console.log("성공");
+                    return response.json();
+                } else {
+                    console.log("에러");
+                }
+            }).then(data => {//위에서 리턴한 response.json()외 결과를 받아서 처리하는})
+                console.log(data);
+            });
+
+            //인풋버튼으로 값 저장
+            fetch('/user', {
+                method: "POST",
+            })
+
+
+        })
+
+
+
+
+    </script>
+</body>
+
+</html>
