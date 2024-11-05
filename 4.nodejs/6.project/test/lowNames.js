@@ -280,12 +280,12 @@ const processedItems = items.map((item) => item.slice(0, 2));
 console.log(processedItems);
 // writeToCSV(processedItems, "names");
 
-// 3. toCSV
-function writeToCSV(data, filePath) {
-  const fs = require("fs");
+// // 3. toCSV
+// function writeToCSV(data, filePath) {
+//   const fs = require("fs");
 
-  // const csvContent = processedItems.join("\n");
+//   // const csvContent = processedItems.join("\n");
 
-  fs.writeFileSync(filePath, csvContent, "utf-8"); // 파일 저장=
-  console.log("csv파일에 저장이 완료되었습니다");
-}
+//   fs.writeFileSync(filePath, csvContent, "utf-8"); // 파일 저장=
+//   console.log("csv파일에 저장이 완료되었습니다");
+// }

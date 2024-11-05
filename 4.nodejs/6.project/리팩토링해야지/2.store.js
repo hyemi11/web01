@@ -1,4 +1,4 @@
-const { MyUtility, generateId } = require("./myUtility.js");
+const { MyUtility, generateId } = require("./Utility.js");
 
 //------------------------------------generate속성데이터------------------------------------------------//
 
@@ -99,18 +99,16 @@ class DataPrinter {
     const csvContent = [header.join(","), ...rows].join("\n"); // 헤더 포함 CSV 내용 생성
 
     fs.writeFileSync(filePath, csvContent, "utf-8"); // 파일 저장
-    console.log("csv파일에 저장이 완료되었습니다");
+    console.log(`${filePath}파일 저장이 완료되었습니다`);
   }
 }
 
 //------------------------------------ 실행 ------------------------------------------------//
 function run() {
-  console.time("실행시간");
   const generator = new Generator();
   const stores = generator.generateData(100);
   const dataPrinter = new DataPrinter(stores);
   // dataPrinter.printConsole();
   dataPrinter.writeToCSV(stores, "store.csv");
-  console.timeEnd("실행시간");
 }
 run();

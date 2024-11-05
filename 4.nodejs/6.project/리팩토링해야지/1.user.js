@@ -1,4 +1,4 @@
-const { MyUtility, generateId } = require("./myUtility.js");
+const { MyUtility, generateId } = require("./Utility.js");
 
 //------------------------------------generate속성데이터------------------------------------------------//
 
@@ -173,7 +173,7 @@ class AgeGenerator {
     let age = c_year - b_year; // -연산이라 자동형변환되긴함
     //생일 안지났으면 -1
     const checkAge =
-      c_month > b_month || (c_month == b_month && c_day >= b_day); //return boolean
+      c_month > b_month || (c_month == b_month && c_day >= b_day); //return boolean (가독성있게 풀어주... 네.맞슴다 쉬운방법으로..)
     if (checkAge == true) {
       age--;
     }
@@ -246,18 +246,16 @@ class DataPrinter {
     const csvContent = [header.join(","), ...rows].join("\n"); // 헤더 포함 CSV 내용 생성
 
     fs.writeFileSync(filePath, csvContent, "utf-8"); // 파일 저장
-    console.log("csv파일에 저장이 완료되었습니다");
+    console.log(`${filePath}파일 저장이 완료되었습니다`);
   }
 }
 
 //------------------------------------ 실행 ------------------------------------------------//
 function run() {
-  console.time("실행시간");
   const generator = new Generator();
   const users = generator.generateData(1000);
   const dataPrinter = new DataPrinter(users);
   // dataPrinter.printConsole();
   dataPrinter.writeToCSV(users, "user.csv");
-  console.timeEnd("실행시간");
 }
 run();

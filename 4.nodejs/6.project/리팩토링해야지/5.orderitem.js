@@ -1,6 +1,6 @@
 const fs = require("fs");
 const csv = require("csv-parser");
-const { MyUtility, generateId } = require("./myUtility.js");
+const { MyUtility, generateId } = require("./Utility.js");
 
 //------------------------------------generate속성데이터------------------------------------------------//
 function readCsv(filePath) {
@@ -98,12 +98,10 @@ class DataPrinter {
 
 //------------------------------------ 실행 ------------------------------------------------//
 async function run() {
-  console.time("실행시간");
   const generator = new Generator();
   const orderItems = await generator.generateData(50000);
   const dataPrinter = new DataPrinter(orderItems);
   //   dataPrinter.printConsole();
   dataPrinter.writeToCSV(orderItems, "orderItem.csv");
-  console.timeEnd("실행시간");
 }
 run();
