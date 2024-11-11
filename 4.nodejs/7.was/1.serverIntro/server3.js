@@ -12,7 +12,7 @@ function readFilePromise(filePath) {
         rejects(err); //오류발생시 reject호출
       } else {
         res.writeHead(200, { "Content-Type": "text/html; charset=utf-8" });
-        resolve(data); //성공시 resolv호출
+        resolve(data); //성공시 resolve호출
       }
     });
   });
