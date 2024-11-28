@@ -1,0 +1,113 @@
+{\rtf1\ansi\ansicpg949\cocoartf2761
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww9640\viewh16960\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 \uc0\u44053 \u51456 \u50689 :\
+0a497257-2b1a-4836-940f-7b95db952e61\
+\uc0\u51312 \u54616 \u51008 :\
+7b5dda41-7547-4660-ab66-3ad52f739fff\
+\
+1. \uc0\u53945 \u51221  \u49324 \u50857 \u51088 \u44032  \u51452 \u47928 \u54620  **\u51452 \u47928 \u47785 \u47197 **\u51012  \u52636 \u47141 \
+\
+SELECT u.Id, u.Name, o.OrderAt\
+FROM users u\
+JOIN orders o ON u.id = o.UserId\
+WHERE u.Id = '0a497257-2b1a-4836-940f-7b95db952e61';\
+\
+2. \uc0\u50948  \u49324 \u50857 \u51088 \u44032  \u51452 \u47928 \u54620  \u49345 \u51216 \u47732 \u44284 , \u49345 \u54408 \u47749 \u46020  \u52636 \u47141 \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 SELECT u.Id, u.Name, o.OrderAt, s.Name, i.Name\
+FROM users u\
+JOIN orders o ON u.id = o.UserId\
+JOIN stores s ON s.Id = o.StoreId\
+JOIN order_items oi ON o.Id = oi.OrderId\
+JOIN items i ON oi.ItemId = i.Id\
+WHERE u.Id = '0a497257-2b1a-4836-940f-7b95db952e61';\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+3. \uc0\u51060  \u49324 \u50857 \u51088 \u44032  \u51339 \u50500 \u54616 \u45716 (\u51452 \u47928 \u54616 \u45716 ) \u49345 \u54408  \u47785 \u47197 \u51008 ?\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 SELECT DISTINCT i.Name\
+FROM users u\
+JOIN orders o ON u.id = o.UserId\
+JOIN stores s ON s.Id = o.StoreId\
+JOIN order_items oi ON o.Id = oi.OrderId\
+JOIN items i ON oi.ItemId = i.Id\
+WHERE u.Id = '0a497257-2b1a-4836-940f-7b95db952e61';\
+\
+4.\uc0\u51060  \u49324 \u46988 \u51060  \u51452 \u47928 \u54620  \u51204 \u52404  \u54633 \u49328 (\u51593  \u51648 \u52636 \u50529  \u54633 \u49328 ) \u44552 \u50529 \u51008 ?\
+\
+SELECT SUM(UnitPrice) FROM Items;\
+SELECT SUM(CAST(UnitPrice AS INTEGER)) FROM Items;\
+\
+SELECT SUM(UnitPrice)\
+FROM orders o\
+JOIN order_Items oi ON o.Id = oi.OrderId\
+JOIN items I ON oi.ItemId = i.id\
+WHERE o.UserId =\
+'0a497257-2b1a-4836-940f-7b95db952e61';\
+\
+SELECT o.OrderAt, I.UnitPrice\
+FROM orders o\
+JOIN order_Items oi ON o.Id = oi.OrderId\
+JOIN items I ON oi.ItemId = i.id\
+WHERE o.UserId =\
+'0a497257-2b1a-4836-940f-7b95db952e61';\
+\
+5. \uc0\u51060  \u49324 \u46988 (\u53945 \u51221  \u49324 \u50857 \u51088 )\u44032  \u48169 \u47928 \u54620  \u49345 \u51216 \u51032  \u48712 \u46020 \u44032  \u45458 \u51008  \u49692 \u49436 \u45824 \u47196  Top 5\u47484  \u44396 \u54616 \u49884 \u50724 \
+\
+SELECT s.Name, Count(*) AS visitCount\
+FROM users u\
+JOIN orders o ON u.Id = o.UserId  \
+JOIN stores s ON o.StoreId = s.Id\
+WHERE u.Id = '7b5dda41-7547-4660-ab66-3ad52f739fff'\
+GROUP BY s.Name\
+ORDER BY visitCount\
+LIMIT 5;\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+-----------------------------------------------------------\
+orders : Id, OrderAt, StorId, UserId\
+order_items :  Id, OrderId, ItemId\
+Items : Id, Name, Type, UnitPrice\
+users : Id, Name, Gender, Age, Birthdate, Address\
+stores : Id, Name, Type, Address \
+\
+\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 -----------------------------------------------------------\
+-----------------------------------------------------------\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+\uc0\u50937 \u54168 \u51060 \u51648  \u47564 \u46308 \u44592 \
+\
+njk <--- \uc0\u53076 \u46300  \u44036 \u44208 (\u55016 \u50476  \u44036 \u44208 )\
+Rest-api <--\uc0\u51061 \u49689 \
+\
+sqlite3 <-- \uc0\u51061 \u49689 \
+Better-sqlite3 <----- \uc0\u53076 \u46300 \u45716  \u44036 \u44208 \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 -----------------------------------------------------------\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+}
