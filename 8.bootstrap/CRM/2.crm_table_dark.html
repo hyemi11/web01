@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 부트스트랩 CSS 가져온다 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <title>Document</title>
+</head>
+
+<body class="bg-dark text-light">
+    <!-- navbar 추가 -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark text-light">
+        <div class="container mt-4 ">
+            <a class="navbar-brand" href="#">myCRM</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">User</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Order</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Order Item</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Item</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Store</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- table 추가 -->
+    <table class="table table-sm container mt-4 table-hover table-dark">
+        <thead>
+            <tr>
+                <th scope="col">Column 1</th>
+                <th scope="col">Column 2</th>
+                <th scope="col">Column 3</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Data 1</td>
+                <td>Data 2</td>
+                <td>Data 3</td>
+
+            </tr>
+            <tr>
+                <td>Data 4</td>
+                <td>Data 5</td>
+                <td>Data 6</td>
+            </tr>
+            <tr>
+                <td>Data 7</td>
+                <td>Data 8</td>
+                <td>Data 9</td>
+            </tr>
+            <tr>
+                <td>Data 10</td>
+                <td>Data 11</td>
+                <td>Data 12</td>
+            </tr>
+            <tr>
+                <td>Data 13</td>
+                <td>Data 14</td>
+                <td>Data 15</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <!-- pagination 추가 -->
+    <nav aria-label="Page navigation example ">
+        <ul class="pagination justify-content-center pagination-dark">
+            <li class="page-item">
+                <a class="page-link bg-dark" href="#" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            <li class="page-item"><a class="page-link bg-dark" href="#">1</a></li>
+            <li class="page-item"><a class="page-link bg-dark" href="#">2</a></li>
+            <li class="page-item"><a class="page-link bg-dark" href="#">3</a></li>
+            <li class="page-item">
+                <a class="page-link bg-dark" href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- 부스트랩 JS 가져온다 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
