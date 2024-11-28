@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>로그인 페이지</title>
-
     <style>
         nav {
-            background-color: whitesmoke;
+            background-color: #f2f2f2;
             overflow: hidden;
         }
 
@@ -16,7 +14,6 @@
             list-style-type: none;
             margin: 0;
             padding: 0;
-            font-weight: 400;
         }
 
         nav li {
@@ -26,17 +23,16 @@
         nav a {
             display: block;
             padding: 14px 16px;
-            color: blueviolet;
+            color: #333;
             text-decoration: none;
         }
 
         nav a:hover {
-            background-color: antiquewhite;
+            background-color: #ddd;
             color: black;
         }
     </style>
 </head>
-
 <body>
     <nav>
         <ul>
@@ -59,12 +55,10 @@
         </form>
     </div>
 
-    <div id="Profile" style="display: none">
+    <div id="profile" style="display:none">
         <h2>안녕하세요, <span id="usernameSpan"></span>님!!</h2>
         <button id="logoutButton">Logout</button>
     </div>
-
     <script src="/static/login.js"></script>
 </body>
-
 </html>
