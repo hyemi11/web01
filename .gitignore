@@ -5,6 +5,8 @@ package-lock.json
 # 개발 하면서 생겨나는 각종 중간 산출물 제외(템퍼럴 파일들)
 *.txt
 *.csv
+*.rtf
+*.drawio
 
 #DB 파일 예외
 *.db
@@ -13,5 +15,7 @@ package-lock.json
 
 .env
 
-각족 로그파일 제외
+각종 로그파일 제외
 *.log
+
+
