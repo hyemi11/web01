@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>crm매출보드</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+  <h2>월간 판매 차트</h2>
+  <canvas id="revenueChart"></canvas>
+  <canvas id="salesChart"></canvas>
+  <canvas id="salesAndRevenue"></canvas>
+  <h2>고객 성별 분포도</h2>
+  <canvas id="genderChart1"></canvas>
+  <canvas id="genderChart2"></canvas>
+
+  <script>
+    // revenue & sales Chart data요청
+    fetch('/revenue_data')
+      .then(response => response.json())
+      .then(data => {
+        // console.log(data.labels, data.revenues, data.counts)
+        const ctx = document.getElementById('revenueChart').getContext('2d');
+        const revenueChart = new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: data.labels,
+            datasets: [{
+              label: '월간 매출액',
+              data: data.revenues,
+            }]
+          },
+          options: {}
+        })
+        const ctx2 = document.getElementById('salesChart').getContext('2d');
+        const salesChart = new Chart(ctx2, {
+          type: 'bar',
+          data: {
+            labels: data.labels,
+            datasets: [{
+              label: '월간 판매량',
+              data: data.counts
+            }]
+          },
+          options: {}
+        })
+
+        // 합치기 : revenue + count (-> 이거 못함)
+        const ctx3 = document.getElementById('salesAndRevenue').getContext('2d');
+        const salesAndRevenue = new Chart(ctx3, {
+          type: 'bar',
+          data: {
+            labels: data.labels,
+            datasets: [{
+              label: '월간 판매량',
+              data: data.counts,
+              yAxisId: 'y-count'
+            }, {
+              label: '월간 매출액',
+              data: data.revenues,
+              yAxisId: 'y-revenue'
+            }]
+          },
+          options: {
+            response: true,
+            scales: {
+              y: {
+                beginAtZero: true // y축이 0에서 시작}
+              },
+              'y-count': {
+                type: 'liner',
+                position: 'left',
+                title: {
+                  display: true,
+                  text: '판매량',
+                },
+              },
+              'y-revenue': {
+                type: 'liner',
+                position: 'right',
+                title: {
+                  display: true,
+                  text: '매출액(₩)',
+                },
+                grid: {
+                  drawOnChartArea: false //오른쪽 y축의 격자를 비활성화
+                }
+              },
+            }
+          },
+        })
+      });
+
+
+    //genderChart1,2 data 요청
+    fetch('/gender_dist_data')
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+
+        const ctx = document.getElementById('genderChart1').getContext('2d');
+        const genderChart1 = new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: data.labels,
+            datasets: [{
+              label: '남성 연령대별 숫자',
+              data: data.maleCount
+            }, {
+              label: '여성 연령대별 숫자',
+              data: data.femaleCount
+            }]
+          },
+          options: {}
+        })
+
+        const ctx2 = document.getElementById('genderChart2').getContext('2d');
+        const genderChart2 = new Chart(ctx2, {
+          type: 'line',
+          data: {
+            labels: data.labels,
+            datasets: [
+              {
+                label: '남성 연령대별 숫자',
+                data: data.maleCount
+              }, {
+                label: '여성 연령대별 숫자',
+                data: data.femaleCount
+              }
+            ]
+          },
+          options: {
+            plugins: {
+              title: {
+                display: true,
+                text: '성별분포챠트'
+              }
+            },
+            scales: {
+              x: {
+                // stacked: true
+              },
+              y: {
+                // stacked: true,
+                title: {
+                  display: true,
+                  text: 'Count'
+                }
+              }
+            }
+          }
+        })
+      });
+  </script>
+</body>
+
+</html>
