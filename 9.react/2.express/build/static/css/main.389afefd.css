@@ -1,0 +1,19 @@
+.App {
+  text-align: center;
+}
+.App-header {
+  align-items: center;
+  background-color: #222;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+}
+.message {
+  background-color: #ff0;
+  border-radius: 50px;
+  color: green;
+  padding: 15px;
+}
+/*# sourceMappingURL=main.389afefd.css.map*/
