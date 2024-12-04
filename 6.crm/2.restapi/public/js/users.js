@@ -1,6 +1,8 @@
 const searchButton = document.getElementById("search-button");
 const searchInput = document.getElementById("search-name");
 
+document.addEventListener("DOMContentLoaded", fetchUsers(""));
+
 searchButton.addEventListener("click", () => {
   searchName = searchInput.value;
   fetchUsers(searchName);
@@ -58,6 +60,37 @@ function renderTable(data) {
     }
     tableBody.appendChild(bodyRow);
   });
+}
+
+// 네비게이션 클릭 이벤트 설정
+document.addEventListener("DOMContentLoaded", () => {
+  document.body.addEventListener("click", (e) => {
+    if (e.target.matches("roots")) {
+      e.preventDefault();
+      const url = e.target.getAttribute("href");
+      loadPage(url);
+      history.pushState(null, null, url); // URL 업데이트
+    }
+  });
+
+  // 뒤로가기/앞으로가기 이벤트 처리
+  window.addEventListener("popstate", () => {
+    loadPage(window.location.pathname);
+  });
+});
+
+function loadPage(url) {
+  fetch(url)
+    .then((response) => {
+      if (!response.ok) throw new Error("Page not found");
+      return response.text();
+    })
+    .then((html) => {
+      document.getElementById("app").innerHTML = html; // 콘텐츠 교체
+    })
+    .catch((error) => {
+      document.getElementById("app").innerHTML = "<h1>404 Not Found</h1>";
+    });
 }
 
 fetchUsers(""); //시작할때는 그냥 빈값으로 검색, 즉 모든사용자 출력으로 시작.

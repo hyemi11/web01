@@ -10,43 +10,23 @@ const app = express();
 const port = 3000;
 const db = new sqlite3.Database("user-sample.db");
 
-const logStream = fs.createWriteStream(path.join(__dirname, "access.log"), {
-  flags: "a",
-}); //접속로그확인..로그스트림 저장 (a=append)
-
 //미들웨어
+//static 설정
 app.use(express.static("public"));
-app.use(morgan("combine", { stream: logStream })); // 로그스트림 파일로 저장시키기
+//디버깅모드 설정
 app.use(morgan("dev"));
-// combined - 아파치 서버 로그 포멧
-// common - 요약된 형태
-// dev - 개발시 유용한 모드
-// tiny
-// short
-
-//모건 커스터마이징1
-// app.use(morgan(":method :url :status"));
-// app.use(
-//   morgan("dev", {
-//     skip: (req, res) => res.statusCode === 404,
-//   })
-// );
-
-//모건 커스터마이징 2
-// app.use(myLogger)  //api수신 확인 디버깅
+// app.use(myLogger)
 // function myLogger(req, res, next) {
 //   console.log(`LOG: ${req.method} ${req.url}`);
 //   next();
 // }
 
-// app.use(myLogger)
-
-function myLogger(req, res, next) {
-  console.log(`LOG: ${req.method} ${req.url}`);
-  next();
-}
-
 //라우트
+app.get("/", (req, res) => {
+  res.sendFile(path.resolve("./public/index.html"));
+  // res.sendFile(path.join(__dirname, 'public', 'users.html'));
+});
+
 //시스템 호출용 API
 app.get("/api/users", (req, res) => {
   const query = "SELECT * FROM users";
@@ -72,11 +52,6 @@ app.get("/api/users/:id", (req, res) => {
 //사용자 페이지용 라우트
 app.get("/users/:id", (req, res) => {
   res.sendFile(path.resolve("./public/user_detail.html"));
-});
-
-app.get("/", (req, res) => {
-  res.sendFile(path.resolve("./public/users.html"));
-  // res.sendFile(path.join(__dirname, 'public', 'users.html'));
 });
 
 //서버시작

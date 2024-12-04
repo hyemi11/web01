@@ -84,5 +84,5 @@ app.get("/", (req, res) => {
 
 //서버시작
 app.listen(port, () => {
-  console.log("Server is ready on http://localhost:${port}");
+  console.log(`Server is ready on http://localhost:${port}`);
 });
