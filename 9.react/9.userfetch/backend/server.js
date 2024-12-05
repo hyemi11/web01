@@ -1,7 +1,6 @@
 const express = require("express");
 const cors = require("cors"); //npm i cors로 설치
 const morgan = require("morgan"); //npm i morgan으로 설치
-const { error } = require("console");
 const app = express();
 
 // const users = [

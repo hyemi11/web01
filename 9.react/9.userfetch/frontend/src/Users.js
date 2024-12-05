@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 const Users = () => {
+  //mock 데이터... 백엔드 없으니까 가상데이터로 (기다릴순없으니)
   // const users = [
   //     { id: 1, name: 'Alice' },
   //     { id: 2, name: 'Bob' },
@@ -24,7 +25,7 @@ const Users = () => {
   return (
     <div>
       <h2>유저 목록</h2>
-      {/* 방법1. */}
+
       <ul>
         {users.map((user) => (
           <li key={user.id}>
