@@ -27,7 +27,13 @@ const App = () => {
   };
 
   const addMemo = (text) => {
-    const newMemo = { id: Date.now(), text, completed: false, content: "" }; // 고유ID와 텍스트값으로 메모 객체 생성
+    const newMemo = {
+      id: Date.now(),
+      text,
+      completed: false,
+      content: "",
+      url: "",
+    }; // 고유ID와 텍스트값으로 메모 객체 생성
     setMemos([...memos, newMemo]); // 기존 메모 배열에 새 메모 추가
   };
 
@@ -70,10 +76,10 @@ const App = () => {
     });
   };
 
-  const saveMemos = (id, text, content) => {
+  const saveMemos = (id, text, content, url) => {
     const editedMemos = memos.map((m) => {
       if (m.id === id) {
-        return { ...m, text: text, content: content };
+        return { ...m, text: text, content: content, url: url };
       } else return m;
     });
     setMemos(editedMemos);

@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const MemoDetail = ({ memo, onClose, saveMemos, handleFileChange }) => {
+const MemoDetail = ({ memo, onClose, saveMemos }) => {
   // 1. 내부에서 메모 제목과 상세내용을 관리한다.
   // 2. 메모를 저장하는 함수를 받아온다
   // 3. 내부에 저장된 내용을 3번의 함수를 통해서 다시 바깥으로 저장해준다.
@@ -8,15 +8,6 @@ const MemoDetail = ({ memo, onClose, saveMemos, handleFileChange }) => {
   const [text, setTitle] = useState(memo.text); // 제목 초기값
   const [content, setContent] = useState(memo.content); //상세내용 초기값
   const [attachments, setAttachments] = useState([]); //첨부파일 초기값
-
-  const handleFileChange = (e) => {
-    const files = Array.from(e.target.files).map((file) => ({
-      name: file.name,
-      url: URL.createObjectURL(file),
-      type: file.type,
-    }));
-    setAttachments((prev) => [...prev, ...files]);
-  };
 
   // const handleSave = () => {
   //   localStorage.setItem;
@@ -40,7 +31,12 @@ const MemoDetail = ({ memo, onClose, saveMemos, handleFileChange }) => {
         />
         <div className="attachment-section">
           <h3>첨부 파일</h3>
-          <input type="file" multiple onChange={handleFileChange} />
+          <input
+            type="file"
+            multiple
+            onChange={(e) => setAttachments(e.target.files[0])}
+          />
+
           <ul className="attachment-list">
             {attachments.map((file, index) => (
               <li key={index}>
@@ -58,6 +54,7 @@ const MemoDetail = ({ memo, onClose, saveMemos, handleFileChange }) => {
                 <button className="delete-attachment">삭제</button>
               </li>
             ))}
+            console.log
           </ul>
         </div>
         <div className="memo-detail-buttons">
