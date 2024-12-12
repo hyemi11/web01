@@ -1,4 +1,4 @@
-const axios = require("axios");
+const axios = require("./node_modules/axios/index.d.cts");
 
 //특정 사용자의 게시글을 가져올거임
 const userId = 1;

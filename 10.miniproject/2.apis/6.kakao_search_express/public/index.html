@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>카카오오오오오오구글</title>
+</head>
+
+<body>
+    <h1>Koooooooooooooogle</h1>
+    <form id="searchForm">
+        <input type="type" id="query" placeholder="검색어를 입력..." required>
+        <button type="button" data-type="web">웹검색</button>
+        <button type="button" data-type="image">이미지검색</button>
+        <button type="button" data-type="vclip">비디오검색</button>
+    </form>
+
+    <div id="results"><!--여기는결과가올곳--></div>
+
+    <script>
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('click', async (e) => {
+                const query = document.getElementById('query').value;
+                const type = e.target.getAttribute('data-type');
+
+                const response = await fetch(`/api/search?query=${encodeURIComponent(query)}&type=${type}`);
+                if (!response.ok) {
+                    console.log('에러');
+                } else {
+                    const results = await response.json();
+                    // console.log(results);
+                    displayResult(results, type);
+                }
+            });
+        })
+
+        function displayResult(results, type) {
+            const resultsContainer = document.getElementById('results');
+            resultsContainer.innerHTML = '';
+            // resultsContainer.innerHTML = JSON.stringify(results);
+
+            if (type === 'web') {
+                results.documents.forEach(item => {
+                    const resultDiv = document.createElement('div');
+                    resultDiv.innerHTML = `
+                        <h3>${item.title}</h3>
+                        <p>${item.contents}</p>
+                        <a href="${item.url}" target="_blank">${item.url}</a>
+                    `
+                    resultsContainer.appendChild(resultDiv);
+                })
+            } else if (type === 'image') {
+                results.documents.forEach(item => {
+                    const resultDiv = document.createElement('div');
+                    resultDiv.innerHTML = `
+                        <img src="${item.thumbnail_url}" alt="Thumbnail">
+                    `
+                    resultsContainer.appendChild(resultDiv);
+                })
+            } else if (type === 'vclip') {
+                results.documents.forEach(item => {
+                    const resultDiv = document.createElement('div');
+                    resultDiv.innerHTML = `
+                        <img src="${item.thumbnail}" alt="Thumbnail">
+                    `
+                    resultsContainer.appendChild(resultDiv);
+                })
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,4 +1,4 @@
-const axios = require("axios");
+const axios = require("./node_modules/axios/index.d.cts");
 require("dotenv").config();
 
 const API_KEY = process.env.YOUTUBE_API_KEY;

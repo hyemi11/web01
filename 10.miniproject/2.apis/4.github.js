@@ -1,4 +1,4 @@
-const axios = require("axios");
+const axios = require("./node_modules/axios/index.d.cts");
 require("dotenv").config();
 
 const username = "hyemi11";

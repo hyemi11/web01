@@ -1,5 +1,5 @@
 const fetch = require("node-fetch");
-const axios = require("axios");
+const axios = require("./node_modules/axios/index.d.cts");
 // import fetch from "node-fetch";   //최신문법 : 파일 확장자가 mjs가 되어야하고 패키지.json에 "type": "module" 추가해줘야함
 // import axios from 'axios';
 
